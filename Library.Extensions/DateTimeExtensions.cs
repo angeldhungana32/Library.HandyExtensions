@@ -1,4 +1,4 @@
-﻿namespace Library.Extensions
+﻿namespace Library.HandyExtensions
 {
     public static class DateTimeExtensions
     {

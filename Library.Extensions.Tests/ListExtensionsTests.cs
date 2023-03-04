@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Library.Extensions.Tests
+namespace Library.HandyExtensions.Tests
 {
     public class ListExtensionsTests
     {
