@@ -6,7 +6,7 @@
         [MemberData(nameof(StringTestData.ReverseItems), MemberType = typeof(StringTestData))]
         public void Reverse_ShouldEqual(string value, string expected)
         {
-            Assert.Equal(value.Reverse(), expected);
+            Assert.Equal(expected, value.Reverse());
         }
 
         [Theory]
@@ -49,6 +49,13 @@
         public void IsUrl_InvalidUrls_ReturnsFalse(string url)
         {
             Assert.False(url.IsUrl());
+        }
+
+        [Theory]
+        [MemberData(nameof(StringTestData.ToTitleCaseItems), MemberType = typeof(StringTestData))]
+        public void ToTitleCase_ReturnsExpectedString(string input, string expected)
+        {
+            Assert.Equal(expected, input.ToTitleCase());
         }
     }
 
@@ -110,5 +117,16 @@
             new object[] { "http:///example.com" },
             new object[] { "https:///example.com" }
         };
+
+        public static IEnumerable<object[]> ToTitleCaseItems =>
+           new List<object[]>
+           {
+                new object[] { "hello world", "Hello World" },
+                new object[] { "Hello World", "Hello World" },
+                new object[] { "hELLO wORLD", "Hello World" },
+                new object[] { "hEllo wOrld", "Hello World" },
+                new object[] { "1234", "1234" },
+                new object[] { "", "" }
+           };
     }
 }

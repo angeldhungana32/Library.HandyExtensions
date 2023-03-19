@@ -33,6 +33,19 @@ namespace Library.HandyExtensions
         }
 
         /// <summary>
+        /// Converts the first character of each word in the string to uppercase.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ToTitleCase(this string value)
+        {
+            return CultureInfo
+                .CurrentCulture
+                .TextInfo
+                .ToTitleCase(value);
+        }
+
+        /// <summary>
         /// Returns true if the string is a valid email address.
         /// </summary>
         /// <param name="value"></param>
