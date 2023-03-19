@@ -1,4 +1,7 @@
-﻿namespace Library.HandyExtensions
+﻿using System.Globalization;
+using System.Text;
+
+namespace Library.HandyExtensions
 {
     public static class StringExtensions
     {
@@ -27,6 +30,36 @@
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Returns true if the string is a valid email address.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool IsEmail(this string value)
+        {
+            try
+            {
+                var address = new System.Net.Mail.MailAddress(value);
+                return address.Address == value;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Returns true if the string is a valid URL.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool IsUrl(this string value)
+        {
+            return Uri.TryCreate(value, UriKind.Absolute, out Uri? uri)
+                && (uri != null)
+                && (uri.Scheme == Uri.UriSchemeHttp ||  uri.Scheme == Uri.UriSchemeHttps);  
         }
     }
 }
